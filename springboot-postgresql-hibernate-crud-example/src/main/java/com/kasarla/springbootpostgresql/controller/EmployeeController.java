@@ -3,25 +3,32 @@ package com.kasarla.springbootpostgresql.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kasarla.springbootpostgresql.model.Employee;
 import com.kasarla.springbootpostgresql.repository.EmployeeRepository;
+import com.kasarla.springbootpostgresql.service.EmployeeService;
 
-@RestController
+@Controller
 public class EmployeeController {
 	
-	private final EmployeeRepository employeeRepository;
-	
 	@Autowired
-	public EmployeeController(EmployeeRepository employeeRepository) {
-		this.employeeRepository=employeeRepository;
+	private EmployeeService employeeService;
+	
+	@GetMapping(value = {"/", "index"})
+	public String index(Model model) {
+		return "index";
 	}
+	
 	@GetMapping("/employees")
-	public List<Employee> getAllEmployees(){
-		return this.employeeRepository.findAll();
+	public String getEmployees(Model model) {
+		List<Employee> employees = employeeService.findAll();
+		model.addAttribute("employees", employees);
+		return "employee-list";
 	}
 	
-	
+
 	}
