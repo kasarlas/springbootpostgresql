@@ -8,26 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kasarla.springbootpostgresql.model.Employee;
-import com.kasarla.springbootpostgresql.repository.EmployeeRepository;
-import com.kasarla.springbootpostgresql.service.EmployeeService;
+import com.kasarla.springbootpostgresql.model.Testcase;
+import com.kasarla.springbootpostgresql.service.TestcaseService;
 
 @Controller
-public class EmployeeController {
+public class TestcaseController {
 	
 	@Autowired
-	private EmployeeService employeeService;
+	private TestcaseService testcaseService;
 	
 	@GetMapping(value = {"/", "index"})
 	public String index(Model model) {
 		return "index";
 	}
 	
-	@GetMapping("/employees")
+	@GetMapping("/QAAutomation")
 	public String getEmployees(Model model) {
-		List<Employee> employees = employeeService.findAll();
-		model.addAttribute("employees", employees);
-		return "employee-list";
+		List<Testcase> testcase = testcaseService.findAll();
+		model.addAttribute("QAAutomation", testcase);
+		return "testcase-list";
 	}
 	
 

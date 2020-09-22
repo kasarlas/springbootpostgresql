@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>QAAutomation</title>
+	</head>
+	<body>
+		<h1>Employee List</h1>
+		<div>
+		<table border="1">
+			<tr>
+				<th>testcase_id</th>
+				<th>test_scenario</th>
+				<th>test_description</th>
+				<th>system_id</th>
+				<th>created_by</th>
+				<th>created_on</th>
+				<th>updated_by</th>
+				<th>udated_on</th>
+			</tr>
+			<tr th:each="testcase : ${QAAutomation}">
+				<td th:utext="${testcase.testcaseid}">...</td>
+				<td th:utext="${testcase.testscenario}">...</td>
+				<td th:utext="${testcase.testdescription}">...</td>
+				<td th:utext="${testcase.systemid}">...</td>
+				<td th:utext="${testcase.createdby}">...</td>
+				<td th:utext="${testcase.createdon}">...</td>
+				<td th:utext="${testcase.updatedby}">...</td>
+				<td th:utext="${testcase.updatedon}">...</td>
+			
+		
+		</tr>
+		</table>
+		</div>
+
+</body>
+</html>
